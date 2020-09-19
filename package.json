@@ -6,17 +6,14 @@
   "author": "Gem Xli <x.li.gem@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node server/index.ts",
     "dev": "nodemon",
+    "serve": "vite serve",
     "version": "standard-changelog && git add CHANGELOG.md",
     "lint": "eslint --ext .ts src --fix"
   },
   "dependencies": {
-    "co": "^4.6.0",
-    "debug": "^4.2.0",
-    "koa": "^2.13.0",
-    "koa-send": "^5.0.1",
-    "koa-stream": "^0.2.0"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@types/co": "^4.6.2",
@@ -25,15 +22,21 @@
     "@types/koa-send": "^4.1.2",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "co": "^4.6.0",
+    "debug": "^4.2.0",
     "eslint": "^7.9.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "koa": "^2.13.0",
+    "koa-send": "^5.0.1",
+    "koa-stream": "^0.2.0",
     "nodemon": "^2.0.4",
     "standard-changelog": "^2.0.24",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "vite": "^1.0.0-rc.4"
   }
 }

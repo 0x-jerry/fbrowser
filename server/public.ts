@@ -23,6 +23,7 @@ export function PublicAssets(root: string): Middleware {
 
     debug(`public assets: ${filePath}`)
 
+    ctx.set('', '')
     await send(ctx, filePath, { root })
   }
 }
