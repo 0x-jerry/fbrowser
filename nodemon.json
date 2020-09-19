@@ -1,0 +1,10 @@
+{
+  "watch": [
+    "src"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "exec": "yarn start",
+  "ext": "ts,js,json,mjs"
+}
