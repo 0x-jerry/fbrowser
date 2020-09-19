@@ -1,6 +1,6 @@
 {
   "name": "fbrowser",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/cwxyz007/fbrowser.git",
   "author": "Gem Xli <x.li.gem@gmail.com>",
