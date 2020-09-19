@@ -8,18 +8,21 @@
   "scripts": {
     "start": "ts-node server/index.ts",
     "dev": "nodemon",
-    "serve": "vite serve",
+    "serve": "vite serve --port 3001",
     "version": "standard-changelog && git add CHANGELOG.md",
     "lint": "eslint --ext .ts src --fix"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
     "@types/co": "^4.6.2",
     "@types/debug": "^4.1.5",
     "@types/koa": "^2.11.4",
+    "@types/koa-cash": "^4.0.0",
     "@types/koa-send": "^4.1.2",
+    "@types/lru-cache": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "co": "^4.6.0",
@@ -31,8 +34,10 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "koa": "^2.13.0",
+    "koa-cash": "^4.0.5",
     "koa-send": "^5.0.1",
     "koa-stream": "^0.2.0",
+    "lru-cache": "^6.0.0",
     "nodemon": "^2.0.4",
     "standard-changelog": "^2.0.24",
     "ts-node": "^9.0.0",
