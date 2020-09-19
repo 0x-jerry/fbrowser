@@ -2,7 +2,6 @@ import { Context, Middleware } from 'koa'
 import co from 'co'
 import send from 'koa-send'
 import sendStream from 'koa-stream'
-import path from 'path'
 
 const sendVideo = co.wrap(sendStream.file) as (
   ctx: Context,
@@ -12,9 +11,7 @@ const sendVideo = co.wrap(sendStream.file) as (
 
 const debug = require('debug')('fbrowser:assets')
 
-export function AssetsResources(root?: string): Middleware {
-  root = root || path.join(__dirname, '..', 'data')
-
+export function AssetsResources(root: string): Middleware {
   return async (ctx, next) => {
     if (!ctx.path.startsWith('/assets')) {
       await next()

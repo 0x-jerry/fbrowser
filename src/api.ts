@@ -1,4 +1,7 @@
 import { Context, Middleware } from 'koa'
+import fs from 'fs'
+import path from 'path'
+import { config } from './config'
 
 const debug = require('debug')('fbrowser:api')
 
@@ -10,9 +13,28 @@ const query: Route = async (ctx) => {
   const { dir } = ctx.query
   debug('api: %O', ctx.query)
 
-  if (dir) {
-    console.log(dir)
+  const distDir = path.join(config.assetsDir, dir)
+  const stat = fs.statSync(distDir)
+
+  const result = {
+    path: dir,
+    files: []
   }
+
+  if (stat.isDirectory()) {
+    const files = fs.readdirSync(distDir)
+
+    files
+      .filter((file) => {
+        const filePath = path.join(distDir, file)
+        return config.filter(file, filePath)
+      })
+      .forEach((file) => {
+        result.files.push(file)
+      })
+  }
+
+  ctx.body = result
 }
 
 export function API(): Middleware {

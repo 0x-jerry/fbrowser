@@ -1,6 +1,7 @@
 import Koa from 'koa'
 import { API } from './api'
 import { AssetsResources } from './assets'
+import { config } from './config'
 import { PublicAssets } from './public'
 
 const app = new Koa()
@@ -14,8 +15,8 @@ app
 
     await next()
   })
-  .use(PublicAssets())
-  .use(AssetsResources())
+  .use(PublicAssets(config.htmlDir))
+  .use(AssetsResources(config.assetsDir))
   .use(API())
 
 app.listen(3000, () => {
