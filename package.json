@@ -6,10 +6,11 @@
   "author": "Gem Xli <x.li.gem@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node server/index.ts",
-    "dev": "nodemon",
-    "serve": "vite serve --port 3001",
-    "build": "vite build",
+    "start": "node server/index.js",
+    "server:dev": "nodemon",
+    "server:build": "tsc -p server",
+    "client:dev": "vite serve --port 3001",
+    "client:build": "vite build",
     "version": "standard-changelog && git add CHANGELOG.md",
     "lint": "eslint --ext .ts src --fix"
   },
