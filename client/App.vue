@@ -5,7 +5,11 @@
         <div class="header">{{dir}}</div>
       </div>
       <div class="tree-items">
-        <div class="tree-item" v-for="o in files" @click="show(o)">{{o}}</div>
+        <div v-if="dir !== '/'" class="tree-item" @click="back()">..</div>
+        <div class="tree-item" v-for="o in files" @click="show(o)">
+          {{o.isFolder ? '*': ' '}}
+          {{o.name}}
+        </div>
       </div>
     </div>
     <div class="right">
@@ -40,14 +44,33 @@ export default {
     },
     show(file) {
       const base = config.isDev ? 'http://localhost:3000/assets' : '/assets'
-      this.currentFile = base + this.dir + file
-      const ext = file.split('.').pop()
+
+      if (file.isFolder) {
+        this.enter(file.name)
+        return
+      }
+
+      const sep = this.dir.endsWith('/') ? '' : '/'
+      this.currentFile = base + this.dir + sep + file.name
+      const ext = file.name.split('.').pop()
 
       if (/^(mp4)$/.test(ext)) {
         this.currentFileType = 'video'
       } else if (/^(png|jpeg|jpg)$/.test(ext)) {
         this.currentFileType = 'image'
       }
+    },
+    enter(dir) {
+      const dirs = this.dir.split('/')
+      dirs.push(dir)
+      this.dir = dirs.join('/').substr(1) || '/'
+      this.getDir(this.dir)
+    },
+    back() {
+      const dirs = this.dir.split('/')
+      dirs.pop()
+      this.dir = dirs.join('/').substr(1) || '/'
+      this.getDir(this.dir)
     }
   }
 }

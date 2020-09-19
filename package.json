@@ -9,6 +9,7 @@
     "start": "ts-node server/index.ts",
     "dev": "nodemon",
     "serve": "vite serve --port 3001",
+    "build": "vite build",
     "version": "standard-changelog && git add CHANGELOG.md",
     "lint": "eslint --ext .ts src --fix"
   },

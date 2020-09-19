@@ -30,7 +30,12 @@ const query: Route = async (ctx) => {
         return config.filter(file, filePath)
       })
       .forEach((file) => {
-        result.files.push(file)
+        const stat = fs.statSync(path.join(distDir, file))
+
+        result.files.push({
+          name: file,
+          isFolder: stat.isDirectory()
+        })
       })
   }
 
