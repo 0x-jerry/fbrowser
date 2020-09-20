@@ -8,12 +8,12 @@ RUN yarn
 
 COPY . .
 
-RUN yarn server:build
-
-EXPOSE 3000
+RUN yarn server:build && yarn client:build
 
 ENV NODE_ENV production
 
 VOLUME [ "/app/data" ]
+
+EXPOSE 3000
 
 CMD ["yarn", "start"]
