@@ -15,12 +15,12 @@
     <div class="right">
       <video v-if="currentFileType === 'video'" :src="currentFile" controls width="800"></video>
       <img v-else-if="currentFileType === 'image'" :src="currentFile" />
-      <div v-else class="empty">请点击左侧文件打开</div>
+      <div v-else class="empty">当前文件类型不支持预览，请点击左侧文件打开</div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { axios } from './api'
 import { config } from './config'
 
@@ -42,7 +42,7 @@ export default {
       const data = r.data
       this.files = data.files
     },
-    show(file) {
+    show(file: { name: string; isFolder: boolean }) {
       const base = config.isDev ? 'http://localhost:3000/assets' : '/assets'
 
       if (file.isFolder) {
