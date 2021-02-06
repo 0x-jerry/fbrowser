@@ -1,17 +1,26 @@
 import { reactive } from 'vue'
-import { IFile } from '../../typings/common'
+import { IFile } from '../../../typings/common'
 import path from 'path'
+import { config } from '../config'
 
 export const store = reactive({
   dir: '/',
-  current: null as IFile | null,
+  current: {
+    name: '',
+    url: '',
+    show: false,
+    type: 'unknown'
+  },
   setSrc(file: IFile) {
-    const filePath = '//localhost:3000/assets' + path.join(store.dir, file.name)
+    const base = config.isDev ? '//localhost:3000/assets' : '/assets'
+
+    const filePath = base + encodeURI(path.join(store.dir, file.name))
 
     store.current = {
-      name: filePath,
-      folder: false,
-      type: file.type
+      name: file.name,
+      show: true,
+      type: file.type,
+      url: filePath
     }
   }
 })

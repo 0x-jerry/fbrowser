@@ -1,11 +1,13 @@
 <template>
-  <div class="folder" v-if="!store.current"></div>
-  <div class="file" v-else>
-    <f-audio :file="store.current.name" v-if="store.current.type.startsWith('audio')" />
-    <f-video :file="store.current.name" v-else-if="store.current.type.startsWith('video')" />
-    <div class="w-full flex justify-center items-center h-24 border-b border-gray-400 bg-gray-100" v-else>
-      {{ store.file?.name }}
-    </div>
+  <div class="truncate text-center bg-gray-100 border-b border-gray-400 py-1">
+    {{ store.current.name }}
+  </div>
+  <div class="folder" v-if="!store.current.show"></div>
+  <div class="file bg-gray-100" v-else>
+    <f-audio :file="url" v-if="type.startsWith('audio')" />
+    <f-video :file="url" v-else-if="type.startsWith('video')" />
+    <f-text :file="url" v-else-if="type.startsWith('text')" />
+    <f-image :file="url" v-else-if="type.startsWith('image')" />
   </div>
 </template>
 
@@ -13,15 +15,22 @@
 import FAudio from './FAudio.vue'
 import FVideo from './FVideo.vue'
 import { store } from './store'
+import FText from './FText.vue'
+import { computed } from 'vue'
+import FImage from './FImage.vue'
 
 export default {
   components: {
     FAudio,
-    FVideo
+    FVideo,
+    FText,
+    FImage
   },
-  data() {
+  setup() {
     return {
-      store
+      store,
+      url: computed(() => store.current.url),
+      type: computed(() => store.current.type)
     }
   }
 }
