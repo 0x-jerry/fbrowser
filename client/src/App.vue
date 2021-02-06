@@ -1,5 +1,5 @@
 <template>
-  <div class="fbrowser flex flex-col">
+  <div class="fbrowser flex flex-col md:w-96 md:m-auto shadow-lg bg-white">
     <f-file />
     <explore class="pb-14"></explore>
     <div
