@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { api } from '../api'
 import FIcon from './FIcon.vue'
 
 export default {
@@ -26,7 +27,18 @@ export default {
   },
   data() {
     return {
-      currentPath: '/'
+      currentPath: '/',
+      dir: '/',
+      files: []
+    }
+  },
+  mounted() {
+    this.getFiles()
+  },
+  methods: {
+    async getFiles() {
+      const data = await api.getFiles(this.dir)
+      console.log(data)
     }
   }
 }

@@ -2,11 +2,18 @@ import { Context, Middleware } from 'koa'
 import fs from 'fs'
 import path from 'path'
 import { config } from './config'
+import mine from 'mime-types'
 
 const debug = require('debug')('fbrowser:api')
 
 interface Route {
   (ctx: Context): Promise<void>
+}
+
+const getFileType = (filePath: string) => {
+  const type = mine.lookup(filePath)
+
+  return type || 'unknown'
 }
 
 const query: Route = async (ctx) => {
@@ -30,11 +37,13 @@ const query: Route = async (ctx) => {
         return config.filter(file, filePath)
       })
       .forEach((file) => {
-        const stat = fs.statSync(path.join(distDir, file))
+        const distFilePath = path.join(distDir, file)
+        const stat = fs.statSync(distFilePath)
 
         result.files.push({
           name: file,
-          isFolder: stat.isDirectory()
+          folder: stat.isDirectory(),
+          type: getFileType(distFilePath)
         })
       })
   }
