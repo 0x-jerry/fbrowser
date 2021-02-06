@@ -2,6 +2,7 @@ import { Context, Middleware } from 'koa'
 import co from 'co'
 import send from 'koa-send'
 import sendStream from 'koa-stream'
+import mime from 'mime-types'
 
 const sendVideo = co.wrap(sendStream.file) as (
   ctx: Context,
@@ -22,7 +23,9 @@ export function AssetsResources(root: string): Middleware {
 
     debug(`assets resources: ${filePath}`)
 
-    if (filePath.endsWith('.mp4')) {
+    const isMedia = /^(audio|video)/.test(mime.lookup(filePath) || '')
+
+    if (isMedia) {
       await sendVideo(ctx, filePath, { root })
     } else {
       await send(ctx, filePath, { root })

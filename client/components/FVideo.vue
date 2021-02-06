@@ -1,5 +1,5 @@
 <template>
-  <video :src="file"></video>
+  <video class="w-full" :src="file" controls></video>
 </template>
 
 <script>

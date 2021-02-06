@@ -56,6 +56,8 @@ export default {
     async openFile(file: IFile) {
       if (file.folder) {
         this.openFolder(file.name)
+      } else {
+        store.setSrc(file)
       }
     },
     async openFolder(name: string) {

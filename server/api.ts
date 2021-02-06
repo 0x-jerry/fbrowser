@@ -2,7 +2,7 @@ import { Context, Middleware } from 'koa'
 import fs from 'fs'
 import path from 'path'
 import { config } from './config'
-import mine from 'mime-types'
+import mime from 'mime-types'
 
 const debug = require('debug')('fbrowser:api')
 
@@ -11,7 +11,7 @@ interface Route {
 }
 
 const getFileType = (filePath: string) => {
-  const type = mine.lookup(filePath)
+  const type = mime.lookup(filePath)
 
   return type || 'unknown'
 }
