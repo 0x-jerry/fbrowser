@@ -8,7 +8,7 @@
     <div class="explore-files">
       <div class="explore-file text-xl" v-for="file in data.files" :key="file.name">
         <div
-          class="flex border-b p-2 border-gray-300"
+          class="flex border-b p-2 border-gray-300 cursor-pointer"
           @click="openFile(file)"
           :class="{
             'bg-blue-50': isCurrent(file)

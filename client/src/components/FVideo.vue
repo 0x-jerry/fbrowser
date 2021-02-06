@@ -1,5 +1,5 @@
 <template>
-  <video class="w-full h-52 object-center bg-black" :src="file" controls></video>
+  <video class="w-full h-52 object-center bg-black" :src="file" controls autoplay></video>
 </template>
 
 <script>

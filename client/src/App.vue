@@ -4,9 +4,11 @@
     <explore class="pb-14"></explore>
     <div
       v-if="title"
-      class="fixed bottom-0 left-0 text-center bg-gray-100 border-t border-gray-400 w-full p-2 truncate"
+      class="fixed bottom-0 left-0 bg-gray-100 border-t border-gray-400 w-full overflow-x-auto text-center"
     >
-      {{ title }}
+      <p class="whitespace-pre p-2 w-min inline-block">
+        {{ title }}
+      </p>
     </div>
   </div>
 </template>

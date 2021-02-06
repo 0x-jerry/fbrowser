@@ -1,5 +1,5 @@
 <template>
-  <audio class="w-full" :src="file" controls></audio>
+  <audio class="w-full" :src="file" controls autoplay></audio>
 </template>
 
 <script>
