@@ -8,7 +8,7 @@ RUN yarn
 
 COPY . .
 
-RUN yarn server:build && yarn client:build
+RUN yarn build
 
 ENV NODE_ENV production
 

@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: './',
   build: {
-    outDir: 'dist'
+    outDir: 'dist-client'
   },
   alias: {
     path: 'path-browserify'

@@ -6,6 +6,7 @@
   "author": "Gem Xli <x.li.gem@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node ./dist-server/index.js",
     "nodemon:start": "ts-node server/index.ts",
     "dev": "run-p dev:*",
     "dev:server": "nodemon",
