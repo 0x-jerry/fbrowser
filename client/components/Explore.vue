@@ -2,11 +2,15 @@
   <div class="explore">
     <div class="explore-route">
       路径:
-      <span class="current-path">{{ currentPath }}</span>
+      <span class="current-path text-blue-500">{{ currentPath }}</span>
     </div>
     <div class="explore-files">
-      <div class="explore-file">
+      <div class="explore-file text-4xl">
         <f-icon name="image" />
+        <f-icon name="video" />
+        <f-icon name="music" />
+        <f-icon name="folder" />
+        <f-icon name="unknown" />
         xxx
       </div>
     </div>
@@ -14,7 +18,7 @@
 </template>
 
 <script>
-import FIcon from './components/FIcon.vue'
+import FIcon from './FIcon.vue'
 
 export default {
   components: {
@@ -33,8 +37,5 @@ export default {
   &-route {
     padding: 5px;
   }
-}
-.current-path {
-  color: #006eff;
 }
 </style>

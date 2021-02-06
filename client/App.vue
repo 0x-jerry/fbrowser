@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Explore from './Explore.vue'
+import Explore from './components/Explore.vue'
 
 export default {
   components: { Explore }
