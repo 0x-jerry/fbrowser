@@ -5,7 +5,7 @@
   "scripts": {
     "nodemon:start": "ts-node src/index.ts",
     "start": "nodemon",
-    "build": "tsc -p server"
+    "build": "tsc -p ."
   },
   "dependencies": {
     "co": "^4.6.0",

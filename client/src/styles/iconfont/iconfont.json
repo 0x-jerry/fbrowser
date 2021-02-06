@@ -1,0 +1,51 @@
+{
+  "id": "2368414",
+  "name": "file browser",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14421022",
+      "name": "后退",
+      "font_class": "file-goback",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "2438884",
+      "name": "file-b-11",
+      "font_class": "file-unknown",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "2438877",
+      "name": "file-b-0",
+      "font_class": "file-folder",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "2438878",
+      "name": "file-b-1",
+      "font_class": "file-audio",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "2438881",
+      "name": "file-b-9",
+      "font_class": "file-image",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "2438885",
+      "name": "file-b-10",
+      "font_class": "file-video",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    }
+  ]
+}

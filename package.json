@@ -6,6 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "sh ./scripts/dev.sh",
+    "build": "sh ./scripts/build.sh",
+    "build:docker": "sh ./scripts/build-docker.sh",
     "version": "standard-changelog && git add CHANGELOG.md",
     "lint": "eslint --ext .ts client server --fix"
   },
