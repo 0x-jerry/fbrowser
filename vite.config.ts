@@ -1,8 +1,18 @@
-import { UserConfig } from 'vite'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 
-const conf: UserConfig = {
-  outDir: 'dist',
-  base: './'
-}
-
-export default conf
+export default defineConfig({
+  base: './',
+  build: {
+    outDir: 'dist'
+  },
+  plugins: [vue()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000/api',
+        changeOrigin: true
+      }
+    }
+  }
+})
