@@ -2,15 +2,9 @@ FROM node:12.18-alpine
 
 WORKDIR /app
 
-COPY ["package.json", "yarn.lock", "./"]
-
-RUN yarn
+ENV NODE_ENV production
 
 COPY . .
-
-RUN yarn build
-
-ENV NODE_ENV production
 
 VOLUME [ "/app/data" ]
 

@@ -1,6 +1,6 @@
 import path from 'path'
 
-const resolve = (...args: string[]) => path.join(__dirname, '..', ...args)
+const resolve = (...args: string[]) => path.join(__dirname, '..', '..', ...args)
 
 export const config = {
   isDev: process.env.NODE_ENV === 'development',
