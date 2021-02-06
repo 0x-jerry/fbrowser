@@ -1,4 +1,4 @@
-FROM node:12.18-alpine
+FROM arm32v7/node:alpine3.12
 
 ENV NODE_ENV production
 
