@@ -8,7 +8,8 @@ const colorMap = {
   folder: 'text-yellow-500',
   video: 'text-purple-500',
   audio: 'text-green-500',
-  unknown: 'text-gray-500'
+  unknown: 'text-gray-500',
+  goback: 'text-gray-500'
 }
 
 export default {
@@ -32,6 +33,6 @@ export default {
 
 <style>
 .iconfont {
-  /* @apply text-purple-500 text-gray-500; */
+  font-size: inherit;
 }
 </style>

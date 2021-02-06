@@ -1,14 +1,17 @@
 <template>
   <div class="explore">
-    <div class="explore-route px-3 py-2 border-gray-300 border-b">
-      路径:
-      <span class="current-path text-blue-500">{{ currentPath }}</span>
+    <div class="explore-route px-3 py-2 border-gray-500 border-b text-2xl flex">
+      <span class="mr-2"> 路径: </span>
+      <span class="current-path text-blue-500 flex-1">{{ currentPath }}</span>
+      <f-icon v-if="!isRoot" name="goback" @click="goBack"></f-icon>
     </div>
-    <div class="explore-files p-2">
+    <div class="explore-files">
       <div class="explore-file text-2xl" v-for="file in files" :key="file.name">
-        <f-icon v-if="file.folder" class="mr-2" name="folder" @click="openFolder(file.name)" />
-        <f-icon v-else class="mr-2" :name="calcType(file.type)" />
-        <span>{{ file.name }}</span>
+        <div class="flex border-b p-2 border-gray-300" @click="openFile(file)">
+          <f-icon v-if="file.folder" class="mr-2" name="folder" />
+          <f-icon v-else class="mr-2" :name="calcType(file.type)" />
+          <span>{{ file.name }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -17,6 +20,9 @@
 <script lang="ts">
 import { api } from '../api'
 import FIcon from './FIcon.vue'
+import { store } from './store'
+import path from 'path'
+import { IFile } from '../../typings/common'
 
 export default {
   components: {
@@ -24,9 +30,16 @@ export default {
   },
   data() {
     return {
-      currentPath: '/',
-      dir: '/',
+      store,
       files: []
+    }
+  },
+  computed: {
+    currentPath() {
+      return path.parse(store.dir).name
+    },
+    isRoot() {
+      return store.dir === '/'
     }
   },
   mounted() {
@@ -34,24 +47,37 @@ export default {
   },
   methods: {
     async getFiles() {
-      const data = await api.getFiles(this.dir)
+      const data = await api.getFiles(store.dir)
       this.files = data.files
     },
     calcType(type: string) {
       return type.split('/').shift()
     },
+    async openFile(file: IFile) {
+      if (file.folder) {
+        this.openFolder(file.name)
+      }
+    },
     async openFolder(name: string) {
-      this.dir = this.dir + '/' + name
-      const data = await api.getFiles(this.dir)
-      this.files = data.files
+      store.dir = path.join(store.dir, name)
+      this.getFiles()
+    },
+    async goBack() {
+      store.dir = path.parse(store.dir).dir
+
+      this.getFiles()
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .explore {
-  &-route {
+  height: 100vh;
+
+  &-files {
+    height: calc(100% - 50px);
+    overflow-y: auto;
   }
 }
 </style>

@@ -6,6 +6,9 @@ export default defineConfig({
   build: {
     outDir: 'dist'
   },
+  alias: {
+    path: 'path-browserify'
+  },
   plugins: [vue()],
   server: {
     proxy: {
