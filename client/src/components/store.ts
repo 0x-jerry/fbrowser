@@ -22,5 +22,12 @@ export const store = reactive({
       type: file.type,
       url: filePath
     }
+  },
+  isCurrent(file: IFile) {
+    const base = config.isDev ? '//localhost:3000/assets' : '/assets'
+
+    const filePath = base + encodeURI(path.join(store.dir, file.name))
+
+    return store.current.url === filePath
   }
 })

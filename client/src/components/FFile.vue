@@ -1,9 +1,5 @@
 <template>
-  <div class="truncate text-center bg-gray-100 border-b border-gray-400 py-1">
-    {{ store.current.name }}
-  </div>
-  <div class="folder" v-if="!store.current.show"></div>
-  <div class="file bg-gray-100" v-else>
+  <div class="file h-52 bg-gray-100 relative shadow" v-if="store.current.show">
     <f-audio :file="url" v-if="type.startsWith('audio')" />
     <f-video :file="url" v-else-if="type.startsWith('video')" />
     <f-text :file="url" v-else-if="type.startsWith('text')" />

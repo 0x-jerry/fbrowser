@@ -1,5 +1,5 @@
 <template>
-  <img :src="file" alt="" class="h-40 w-full block object-scale-down" />
+  <img :src="file" alt="" class="h-full w-full block object-scale-down" />
 </template>
 
 <script>

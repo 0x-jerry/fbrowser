@@ -1,5 +1,5 @@
 <template>
-  <pre class="text-black overflow-auto w-full h-24 border-b border-gray-400 bg-gray-100">{{ data.content }}</pre>
+  <pre class="text-black overflow-auto w-full h-full p-2">{{ data.content }}</pre>
 </template>
 
 <script>
