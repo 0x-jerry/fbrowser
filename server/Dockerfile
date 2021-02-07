@@ -1,3 +1,6 @@
+# 建议开启 BuildKit 构建
+# https://docs.docker.com/develop/develop-images/build_enhancements/#to-enable-buildkit-builds
+
 FROM arm32v7/node:alpine3.12
 
 ENV NODE_ENV production
