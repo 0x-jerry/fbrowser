@@ -1,5 +1,5 @@
 <template>
-  <div class="explore overflow-y-auto">
+  <div class="explore overflow-y-auto md:flex-1">
     <div class="explore-route px-3 py-2 border-gray-500 border-b text-xl flex">
       <span class="mr-2"> 路径: </span>
       <div class="current-path text-blue-500 flex-1 overflow-ellipsis">{{ currentPath }}</div>

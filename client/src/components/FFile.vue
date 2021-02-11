@@ -1,5 +1,5 @@
 <template>
-  <div class="file h-52 bg-gray-100 relative shadow" v-if="store.current.show">
+  <div class="file h-52 bg-gray-100 relative shadow md:h-full md:w-2/3" v-if="store.current.show">
     <f-audio :file="url" v-if="type.startsWith('audio')" />
     <f-video :file="url" v-else-if="type.startsWith('video')" />
     <f-text :file="url" v-else-if="type.startsWith('text')" />

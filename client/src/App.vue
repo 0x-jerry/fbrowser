@@ -1,12 +1,12 @@
 <template>
-  <div class="fbrowser flex flex-col md:w-96 md:m-auto shadow-lg bg-white">
+  <div class="fbrowser flex flex-col shadow-lg bg-white md:flex-row-reverse">
     <f-file />
     <explore class="pb-14"></explore>
     <div
       v-if="title"
       class="fixed bottom-0 left-0 bg-gray-100 border-t border-gray-400 w-full overflow-x-auto text-center"
     >
-      <p class="whitespace-pre p-2 w-min inline-block">
+      <p class="whitespace-pre p-2 w-min inline-block md:hidden">
         {{ title }}
       </p>
     </div>
