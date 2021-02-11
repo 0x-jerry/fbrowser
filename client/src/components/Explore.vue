@@ -31,7 +31,6 @@ import { store, updateQuery } from './store'
 import path from 'path'
 import { IFile } from '../../../typings/common'
 import { computed, onMounted, reactive, watchEffect } from 'vue'
-import { queryUtils } from '../query'
 
 const calcType = (type: string) => type.split('/').shift()
 
@@ -51,7 +50,7 @@ export default {
 
     onMounted(() => updateFiles())
 
-    const currentPath = computed(() => path.parse(store.dir).name || '/')
+    const currentPath = computed(() => store.dir)
     const isRoot = computed(() => store.dir === '/')
 
     const openFolder = (name: string) => {
