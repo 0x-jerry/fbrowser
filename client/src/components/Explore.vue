@@ -27,10 +27,11 @@
 <script lang="ts">
 import { api } from '../api'
 import FIcon from './FIcon.vue'
-import { store } from './store'
+import { store, updateQuery } from './store'
 import path from 'path'
 import { IFile } from '../../../typings/common'
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive, watchEffect } from 'vue'
+import { queryUtils } from '../query'
 
 const calcType = (type: string) => type.split('/').shift()
 
@@ -55,8 +56,12 @@ export default {
 
     const openFolder = (name: string) => {
       store.dir = path.join(store.dir, name)
-      updateFiles()
     }
+
+    watchEffect(async () => {
+      await updateFiles()
+      updateQuery()
+    })
 
     return {
       data,
@@ -65,7 +70,6 @@ export default {
       calcType,
       goBack() {
         store.dir = path.parse(store.dir).dir
-        updateFiles()
       },
       openFile(file: IFile) {
         if (file.folder) {
