@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { config } from './config'
 import mime from 'mime-types'
+import { IFile } from '../../typings/common'
 
 const debug = require('debug')('fbrowser:api')
 
@@ -25,7 +26,7 @@ const query: Route = async (ctx) => {
 
   const result = {
     path: dir,
-    files: []
+    files: [] as IFile[]
   }
 
   if (stat.isDirectory()) {
@@ -42,11 +43,15 @@ const query: Route = async (ctx) => {
 
         result.files.push({
           name: file,
+          modifiedAt: stat.mtimeMs,
+          createAt: stat.birthtimeMs,
           folder: stat.isDirectory(),
           type: getFileType(distFilePath)
         })
       })
   }
+
+  result.files = result.files.sort((a, b) => b.createAt - a.createAt)
 
   ctx.body = result
 }
